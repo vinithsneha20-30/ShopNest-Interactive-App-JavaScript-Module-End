@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShopNest | Online Shopping</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="shop.css">
+</head>
+<style>
+    .hero-section {
+        min-height: 550px;
+        background-image: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)), url("https://picsum.photos/1600/800?random=20");
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        align-items: center;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: #ffffff;
+    }
+
+    .navbar-brand {
+        font-size: 1.5rem;
+    }
+
+    .navbar .nav-link {
+        transition: 0.3s;
+    }
+
+    .navbar .nav-link:hover {
+        color: #0d6efd;
+    }
+
+
+
+    .hero-overlay {
+        width: 100%;
+    }
+
+    .hero-section h1 {
+        max-width: 800px;
+        margin: auto;
+    }
+
+    .hero-section p {
+        max-width: 650px;
+        margin: 20px auto;
+    }
+
+    .product-card {
+        border: none;
+        overflow: hidden;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .product-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .product-card img {
+        height: 220px;
+        object-fit: cover;
+    }
+
+    .product-card .card-title {
+        font-weight: bold;
+    }
+
+    .rating {
+        letter-spacing: 2px;
+    }
+
+    .price strong {
+        font-size: 1.2rem;
+    }
+
+    .category-card {
+        display: block;
+        padding: 35px 20px;
+        text-align: center;
+        text-decoration: none;
+        color: #212529;
+        background: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .category-card:hover {
+        color: #0d6efd;
+        transform: translateY(-8px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .category-icon {
+        font-size: 3rem;
+        margin-bottom: 15px;
+    }
+
+    .category-card p {
+        color: #6c757d;
+    }
+
+    .newsletter-section {
+        background: #f1f5ff;
+    }
+
+    .newsletter-section p {
+        color: #6c757d;
+    }
+
+    .footer-link {
+        display: block;
+        text-decoration: none;
+        color: #adb5bd;
+        margin-bottom: 8px;
+        transition: 0.3s;
+    }
+
+    .footer-link:hover {
+        color: #ffffff;
+    }
+
+    .social-icons {
+        display: flex;
+        gap: 15px;
+    }
+
+    .social-icons a {
+        color: #ffffff;
+        font-size: 1.4rem;
+        transition: 0.3s;
+    }
+
+    .social-icons a:hover {
+        color: #0d6efd;
+    }
+
+
+    @media (max-width: 991px) {
+
+        /* Got Doubt */
+        .hero-section {
+            min-height: 500px;
+        }
+
+        .hero-section h1 {
+            font-size: 2.7rem;
+        }
+    }
+
+    @media (max-width: 576px) {
+
+        /* Got Doubt [ Mobile Model ]*/
+        .hero-section {
+            min-height: 450px;
+        }
+
+        .hero-section h1 {
+            font-size: 2rem;
+        }
+
+        .hero-section p {
+            font-size: 1rem;
+        }
+
+        .hero-section .btn {
+            display: block;
+            width: 80%;
+            margin: 10px auto;
+        }
+
+        .product-card img {
+            height: 200px;
+        }
+
+        .category-card {
+            padding: 25px 15px;
+        }
+    }
+</style>
+
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+            <div class="container">
+                <img src="./asstes/shoplogo.jpg" alt="ShopNest-Logo" style="width: 30px;">
+                <a class="navbar-brand fw-bold m-sm-3" href="#"> ShopNest </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarMenu">
+                    <ul class="navbar-nav mx-auto">
+                        <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#products">Products</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#categories">Categories</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#newsletter">Newsletter</a></li>
+                    </ul>
+                    <!-- Search Input -->
+                    <form class="d-flex me-3" role="search" onsubmit="return false;">
+                        <input id="searchInput" class="form-control form-control-sm" type="search"
+                            placeholder="Search products...">
+                    </form>
+                    <!-- Cart Trigger Button -->
+                    <button class="btn btn-outline-light position-relative" type="button" data-bs-toggle="offcanvas"
+                        data-bs-target="#cartOffcanvas">
+                        <i class="bi bi-cart3 fs-5"></i>
+                        <span id="cartItemCount"
+                            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">0</span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-overlay">
+                <div class="container text-center text-white">
+                    <h1 class="display-4 fw-bold">Step Into Confidence</h1>
+                    <p class="lead">Walk in Comfort.</p>
+                    <div class="mt-4">
+                        <a href="#products" class="btn btn-primary btn-lg me-2"></a>
+                        <a href="#products" class="btn btn-outline-light btn-lg">View Deals</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Products Section -->
+        <section id="products" class="py-5">
+            <div class="container">
+                <div class="text-center mb-4">
+                    <h2 class="fw-bold">Featured Products</h2>
+                    <p class="text-muted">Check out our popular products</p>
+                </div>
+
+                <!-- Category Filter Buttons -->
+                <div id="categoryFilters" class="d-flex justify-content-center flex-wrap gap-2 mb-5">
+                    <button class="btn btn-dark filter-btn active" data-category="All">All</button>
+                    <button class="btn btn-outline-dark filter-btn" data-category="Electronics">Electronics</button>
+                    <button class="btn btn-outline-dark filter-btn" data-category="Clothing">Clothing</button>
+                    <button class="btn btn-outline-dark filter-btn" data-category="Footwear">Footwear</button>
+                    <button class="btn btn-outline-dark filter-btn" data-category="Books">Books</button>
+                </div>
+
+                <!-- Product Grid Container (Rendered Dynamically via JS) -->
+                <div id="productGrid" class="row g-4">
+                    <!-- Dynamic Products inserted here -->
+                </div>
+
+                <!-- No Products Found Message -->
+                <div id="noProductsMsg" class="text-center py-5 d-none">
+                    <h4 class="text-muted">No products found</h4>
+                    <p class="text-muted">Try adjusting your search or category filter.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Categories Section Icons -->
+        <section id="categories" class="py-5 bg-light">
+            <div class="container">
+                <div class="text-center mb-5">
+                    <h2 class="fw-bold">Shop By Category</h2>
+                    <p class="text-muted">Find exactly what you're looking for</p>
+                </div>
+                <div class="row g-4">
+                    <article class="col-12 col-sm-6 col-lg-3">
+                        <div class="category-card" onclick="filterByCategoryCard('Electronics')" role="button">
+                            <div class="category-icon">💻</div>
+                            <h4>Electronics</h4>
+                            <p>Electronics Gadgets</p>
+                        </div>
+                    </article>
+                    <article class="col-12 col-sm-6 col-lg-3">
+                        <div class="category-card" onclick="filterByCategoryCard('Clothing')" role="button">
+                            <div class="category-icon">👕</div>
+                            <h4>clothing</h4>
+                            <p>Fashion & Casual</p>
+                        </div>
+                    </article>
+                    <article class="col-12 col-sm-6 col-lg-3">
+                        <div class="category-card" onclick="filterByCategoryCard('Footwear')" role="button">
+                            <div class="category-icon">👟</div>
+                            <h4>Footwear</h4>
+                            <p> SportsShoes & casual </p>
+                        </div>
+                    </article>
+                    <article class="col-12 col-sm-6 col-lg-3">
+                        <div class="category-card" onclick="filterByCategoryCard('Books')" role="button">
+                            <div class="category-icon">📚</div>
+                            <h4>Books</h4>
+                            <p>Kids storys</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter Section -->
+        <section id="newsletter" class="newsletter-section py-5">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8 text-center">
+                        <h2 class="fw-bold">Subscribe to Our Newsletter</h2>
+                        <p>Get updates about new products and exclusive deals.</p>
+                        <form class="row g-2 justify-content-center"
+                            onsubmit="event.preventDefault(); alert('Subscribed successfully!');">
+                            <div class="col-md-8">
+                                <input type="email" class="form-control form-control-lg" placeholder="Enter your email"
+                                    required>
+                            </div>
+                            <div class="col-md-auto">
+                                <button type="submit" class="btn btn-primary btn-lg">Subscribe</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Cart Offcanvas Drawer -->
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="cartOffcanvas" aria-labelledby="cartOffcanvasLabel">
+        <div class="offcanvas-header bg-dark text-white">
+            <h5 class="offcanvas-title" id="cartOffcanvasLabel"><i class="bi bi-cart3 me-2"></i>Your Shopping Cart</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
+                aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body d-flex flex-column justify-content-between">
+            <div id="cartItemsContainer" class="flex-grow-1 overflow-auto">
+                <!-- Cart items dynamically inserted here -->
+            </div>
+            <div class="border-top pt-3 mt-3">
+                <div class="d-flex justify-content-between mb-3">
+                    <h5 class="fw-bold mb-0">Total:</h5>
+                    <h5 id="cartTotalPrice" class="fw-bold text-success mb-0">₹0</h5>
+                </div>
+                <button class="btn btn-dark w-100 py-2" onclick="alert('Proceeding to checkout!')">Proceed to
+                    Checkout</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white pt-5 pb-3">
+        <div class="container">
+            <div class="row g-4">
+                <aside class="col-12 col-md-6 col-lg-3">
+                    <h5>ShopNest</h5>
+                    <p class="text-secondary">Your trusted destination for quality products at great prices.</p>
+                </aside>
+                <aside class="col-12 col-md-6 col-lg-3">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="footer-link">Home</a></li>
+                        <li><a href="#products" class="footer-link">Products</a></li>
+                        <li><a href="#categories" class="footer-link">Categories</a></li>
+                        <li><a href="#newsletter" class="footer-link">Newsletter</a></li>
+                    </ul>
+                </aside>
+                <aside class="col-12 col-md-6 col-lg-3">
+                    <h5>Contact</h5>
+                    <p class="text-secondary mb-1"><i class="bi bi-envelope"></i> support@shopnest.com</p>
+                    <p class="text-secondary"><i class="bi bi-telephone"></i> +91 9876543210</p>
+                </aside>
+                <aside class="col-12 col-md-6 col-lg-3">
+                    <h5>Follow Us</h5>
+                    <div class="social-icons">
+                        <a href="#"><i class="bi bi-facebook"></i></a>
+                        <a href="#"><i class="bi bi-instagram"></i></a>
+                        <a href="#"><i class="bi bi-twitter-x"></i></a>
+                        <a href="#"><i class="bi bi-linkedin"></i></a>
+                    </div>
+                </aside>
+            </div>
+            <hr class="border-secondary mt-4">
+            <p class="text-center text-secondary mb-0">© 2026 ShopNest. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap Script & Application Script -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        let allProducts = [];
+        let cart = JSON.parse(localStorage.getItem('shopnest_cart')) || [];
+        let activeCategory = 'All';
+        let searchQuery = '';
+
+        function setIcon(icon) {
+            let link = document.querySelector('link[rel~="icon"]');
+            if (!link) {
+                link = document.createElement('link');
+                link.rel = 'icon';
+                link.type = 'image/x-icon';
+                document.head.appendChild(link);
+            }
+            link.href = `./${icon}`;
+        }
+        setIcon("./asstes/shoplogo.jpg")
+
+
+
+        // Load Products using Fetch API with async/await
+        async function loadProducts() {
+            try {
+                const response = await fetch('shop.json');
+                console.log(response)
+                if (!response.ok) throw new Error('Failed to load products');
+                allProducts = await response.json();
+                renderProducts();
+            } catch (error) {
+                console.error('Error fetching products:', error);
+                document.getElementById('productGrid').innerHTML = `<div class="text-center text-danger"><b>Failed to load products</b>.<br> Recommented: Please kindly <b><em>Run</em></b> This Project on <b><em>"LocalHost"</em></b> For <b><em>Prevent Permission Denaid</em></b> <br> Else: Please Make Sure <b><em>"shop.json"</em></b> Is Available.</div>`;
+            }
+        };
+
+        // Render Products based on filters and search
+        allProducts.forEach(Items => console.log(Items));
+        console.log(allProducts)
+        function renderProducts() {
+            const grid = document.getElementById('productGrid');
+            const noProductsMsg = document.getElementById('noProductsMsg');
+
+            const filtered = allProducts.filter(product => {
+                const matchesCategory = activeCategory === 'All' || product.category === activeCategory;
+                const matchesSearch = product.name.toLowerCase().includes(searchQuery.toLowerCase());
+                return matchesCategory && matchesSearch;
+            });
+
+            grid.innerHTML = '';
+
+            if (filtered.length === 0) {
+                noProductsMsg.classList.remove('d-none');
+                return;
+            } else {
+                noProductsMsg.classList.add('d-none');
+            }
+
+            filtered.forEach(product => {
+                const col = document.createElement('article');
+                col.className = 'col-12 col-sm-6 col-lg-4';
+                col.innerHTML = `
+                    <div class="card product-card h-100 shadow-sm">
+                        <img src="${product.imageUrl}" class="card-img-top" alt="${product.name}" style="height: 200px; object-fit: cover;">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title">${product.name}</h5>
+                            <p class="text-muted small">${product.category}</p>
+                            <div class="rating mb-2">${product.rating}</div>
+                            <div class="price mt-auto mb-3">
+                                <del class="text-muted">₹${product.originalPrice.toLocaleString()}</del>
+                                <strong class="text-success ms-2">₹${product.price.toLocaleString()}</strong>
+                            </div>
+                            <button class="btn btn-dark w-100 mt-auto" onclick="addToCart(${product.id})">
+                                <i class="bi bi-cart-plus me-1"></i>Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(col);
+            });
+        }
+
+        // Live Search Handler using input event
+        document.getElementById('searchInput').addEventListener('input', (e) => {
+            searchQuery = e.target.value.trim();
+            renderProducts();
+        });
+
+        // Category Filter Buttons Handler
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        filterButtons.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                filterButtons.forEach(b => {
+                    b.classList.remove('btn-dark', 'active');
+                    b.classList.add('btn-outline-dark');
+                });
+                e.target.classList.remove('btn-outline-dark');
+                e.target.classList.add('btn-dark', 'active');
+
+                activeCategory = e.target.getAttribute('data-category');
+                renderProducts();
+            });
+        });
+
+        // Helper for Categories Cards Section click navigation
+        function filterByCategoryCard(categoryName) {
+            activeCategory = categoryName;
+            filterButtons.forEach(b => {
+                if (b.getAttribute('data-category') === categoryName) {
+                    b.classList.remove('btn-outline-dark');
+                    b.classList.add('btn-dark', 'active');
+                } else {
+                    b.classList.remove('btn-dark', 'active');
+                    b.classList.add('btn-outline-dark');
+                }
+            });
+            renderProducts();
+            document.getElementById('products').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Cart Management Functions
+        function addToCart(productId) {
+            const product = allProducts.find(p => p.id === productId);
+            if (!product) return;
+
+            const existingItem = cart.find(item => item.id === productId);
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ ...product, quantity: 1 });
+            }
+
+            updateCartState();
+        }
+
+        function updateQuantity(productId, change) {
+            const item = cart.find(item => item.id === productId);
+            if (!item) return;
+
+            item.quantity += change;
+            if (item.quantity <= 0) {
+                cart = cart.filter(item => item.id !== productId);
+            }
+
+            updateCartState();
+        }
+
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            updateCartState();
+        }
+
+        function updateCartState() {
+            // Save to LocalStorage
+            localStorage.setItem('shopnest_cart', JSON.stringify(cart));
+
+            // Update Header Count badge
+            const totalCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+            document.getElementById('cartItemCount').innerText = totalCount;
+
+            renderCartDrawer();
+        }
+
+        function renderCartDrawer() {
+            const container = document.getElementById('cartItemsContainer');
+            const totalPriceEl = document.getElementById('cartTotalPrice');
+
+            container.innerHTML = '';
+
+            if (cart.length === 0) {
+                container.innerHTML = `<p class="text-center text-muted my-5">Your cart is empty.</p>`;
+                totalPriceEl.innerText = '₹0';
+                return;
+            }
+
+            let runningTotal = 0;
+
+            cart.forEach(item => {
+                runningTotal += item.price * item.quantity;
+
+                const div = document.createElement('div');
+                div.className = 'd-flex align-items-center justify-content-between border-bottom py-3';
+                div.innerHTML = `
+                    <div class="d-flex align-items-center">
+                        <img src="${item.imageUrl}" alt="${item.name}" style="width: 50px; height: 50px; object-fit: cover;" class="rounded me-2">
+                        <div>
+                            <h6 class="mb-0 fs-6">${item.name}</h6>
+                            <small class="text-muted">₹${item.price.toLocaleString()} x ${item.quantity}</small>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center gap-2">
+                        <div class="btn-group btn-group-sm" role="group">
+                            <button class="btn btn-outline-secondary px-2" onclick="updateQuantity(${item.id}, -1)">-</button>
+                            <button class="btn btn-outline-secondary px-2" disabled>${item.quantity}</button>
+                            <button class="btn btn-outline-secondary px-2" onclick="updateQuantity(${item.id}, 1)">+</button>
+                        </div>
+                        <button class="btn btn-sm text-danger" onclick="removeFromCart(${item.id})"><i class="bi bi-trash"></i></button>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+
+            totalPriceEl.innerText = `₹${runningTotal.toLocaleString()}`;
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            loadProducts();
+            updateCartState();
+        });
+    </script>
+</body>
+
+</html>

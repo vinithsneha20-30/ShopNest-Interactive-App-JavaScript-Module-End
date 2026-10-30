@@ -1,0 +1,110 @@
+[
+  {
+    "id": 1,
+    "name": "laptop",
+    "category": "Electronics",
+    "price": 24999,
+    "originalPrice": 39999,
+    "rating": "⭐⭐⭐⭐⭐",
+    "imageUrl": "./asstes/laptop.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Pendrive",
+    "category": "Electronics",
+    "price": 399,
+    "originalPrice": 999,
+    "rating": "⭐⭐⭐⭐☆",
+    "imageUrl": "./asstes/pendrive.jpg"
+  },
+  {
+    "id": 3,
+    "name": "Running Shoes",
+    "category": "Footwear",
+    "price": 1899,
+    "originalPrice": 2999,
+    "rating": "⭐⭐⭐⭐⭐",
+    "imageUrl": "./asstes/wshoe1.jpg"
+  },
+  {
+    "id": 4,
+    "name": "baby clothes",
+    "category": "Clothing",
+    "price": 299,
+    "originalPrice": 499,
+    "rating": "⭐⭐⭐⭐☆",
+    "imageUrl": "./asstes/babycloth.jpg"
+  },
+  {
+    "id": 5,
+    "name": "charger",
+    "category": "Electronics",
+    "price": 179,
+    "originalPrice": 299,
+    "rating": "⭐⭐⭐⭐⭐",
+    "imageUrl": "./asstes/charger2.jpg"
+  },
+  {
+    "id": 6,
+    "name": "barbie storys",
+    "category": "Books",
+    "price": 499,
+    "originalPrice": 799,
+    "rating": "⭐⭐⭐⭐☆",
+    "imageUrl": "./asstes/barbiebook2.jpg"
+  },
+  {
+    "id": 7,
+    "name": "Ear bots",
+    "category": "Electronics",
+    "price": 1999,
+    "originalPrice": 2499,
+    "rating": "⭐⭐⭐⭐⭐",
+    "imageUrl": "./asstes/earpots2.jpg"
+  },
+  {
+    "id": 8,
+    "name": "Casual Denim Jacket",
+    "category": "Clothing",
+    "price": 1199,
+    "originalPrice": 2499,
+    "rating": "⭐⭐⭐⭐☆",
+    "imageUrl": "./asstes/menshirt.jpg"
+  },
+  {
+    "id": 9,
+    "name": "Classic  Shoes",
+    "category": "Footwear",
+    "price": 699,
+    "originalPrice": 999,
+    "rating": "⭐⭐⭐⭐⭐",
+    "imageUrl": "./asstes/shoe2.jpg"
+  },
+  {
+    "id": 10,
+    "name": "storys book",
+    "category": "Books",
+    "price": 199,
+    "originalPrice": 299,
+    "rating": "⭐⭐⭐⭐⭐",
+    "imageUrl": "./asstes/storybook.jpg"
+  },
+  {
+    "id": 11,
+    "name": "speakers",
+    "category": "Electronics",
+    "price": 1299,
+    "originalPrice": 1999,
+    "rating": "⭐⭐⭐⭐☆",
+    "imageUrl": "./asstes/speakers.jpg"
+  },
+  {
+    "id": 12,
+    "name": "casulal wear",
+    "category": "Clothing",
+    "price": 999,
+    "originalPrice": 1599,
+    "rating": "⭐⭐⭐⭐☆",
+    "imageUrl": "./asstes/womencloths.jpg"
+  }
+]
